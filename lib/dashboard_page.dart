@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
-import 'jadwal_page.dart';  // Menambahkan import untuk JadwalPage
-import '../widgets/jadwal_widget.dart';  // Import JadwalWidget
+import 'jadwal_page.dart'; // Menambahkan import untuk JadwalPage
+import '../widgets/jadwal_widget.dart'; // Import JadwalWidget
 
 class DashboardPage extends StatefulWidget {
   final String nama;
@@ -18,28 +18,28 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  List<Map<String, String>> krsList = [];  // Menyimpan data KRS
+  List<Map<String, String>> krsList = []; // Menyimpan data KRS
 
   // Fungsi untuk menambah KRS
   void tambahKRS(Map<String, String> newKRS) {
     setState(() {
-      krsList.add(newKRS);  // Menambahkan KRS ke dalam list
+      krsList.add(newKRS); // Menambahkan KRS ke dalam list
     });
   }
 
   // Fungsi untuk menghapus KRS
   void hapusKRS(int index) {
     setState(() {
-      krsList.removeAt(index);  // Menghapus KRS berdasarkan index
+      krsList.removeAt(index); // Menghapus KRS berdasarkan index
     });
   }
 
   // Fungsi untuk menampilkan dialog tambah KRS
   void _tampilkanDialogTambahKRS(BuildContext context) {
-    final TextEditingController _matkulController = TextEditingController();
-    final TextEditingController _hariController = TextEditingController();
-    final TextEditingController _dosenController = TextEditingController();
-    final TextEditingController _jamController = TextEditingController();
+    final TextEditingController matkulController = TextEditingController();
+    final TextEditingController hariController = TextEditingController();
+    final TextEditingController dosenController = TextEditingController();
+    final TextEditingController jamController = TextEditingController();
 
     showDialog(
       context: context,
@@ -50,19 +50,19 @@ class _DashboardPageState extends State<DashboardPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
-                controller: _matkulController,
+                controller: matkulController,
                 decoration: InputDecoration(labelText: 'Nama Mata Kuliah'),
               ),
               TextField(
-                controller: _hariController,
+                controller: hariController,
                 decoration: InputDecoration(labelText: 'Hari'),
               ),
               TextField(
-                controller: _dosenController,
+                controller: dosenController,
                 decoration: InputDecoration(labelText: 'Nama Dosen'),
               ),
               TextField(
-                controller: _jamController,
+                controller: jamController,
                 decoration: InputDecoration(labelText: 'Jam Perkuliahan'),
               ),
             ],
@@ -76,18 +76,18 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                if (_matkulController.text.isNotEmpty &&
-                    _hariController.text.isNotEmpty &&
-                    _dosenController.text.isNotEmpty &&
-                    _jamController.text.isNotEmpty) {
+                if (matkulController.text.isNotEmpty &&
+                    hariController.text.isNotEmpty &&
+                    dosenController.text.isNotEmpty &&
+                    jamController.text.isNotEmpty) {
                   final newKRS = {
-                    'matkul': _matkulController.text,
-                    'hari': _hariController.text,
-                    'dosen': _dosenController.text,
-                    'jam': _jamController.text,
+                    'matkul': matkulController.text,
+                    'hari': hariController.text,
+                    'dosen': dosenController.text,
+                    'jam': jamController.text,
                   };
-                  tambahKRS(newKRS);  // Menambahkan KRS
-                  Navigator.pop(context);  // Tutup dialog
+                  tambahKRS(newKRS); // Menambahkan KRS
+                  Navigator.pop(context); // Tutup dialog
                 }
               },
               child: Text('Tambah'),
@@ -130,7 +130,8 @@ class _DashboardPageState extends State<DashboardPage> {
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Text('Selamat datang, ${widget.nama}', style: TextStyle(fontSize: 20)),
+                child: Text('Selamat datang, ${widget.nama}',
+                    style: TextStyle(fontSize: 20)),
               ),
             ),
             SizedBox(height: 20),
@@ -141,20 +142,24 @@ class _DashboardPageState extends State<DashboardPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => JadwalPage(jadwalKuliah: krsList),  // Mengirim krsList ke JadwalPage
+                    builder: (_) => JadwalPage(
+                        jadwalKuliah:
+                            krsList), // Mengirim krsList ke JadwalPage
                   ),
                 );
               },
               child: Text('Lihat Jadwal Kuliah'),
             ),
             SizedBox(height: 20),
-            JadwalWidget(jadwal: krsList),  // Menampilkan KRS yang ada
+            JadwalWidget(jadwal: krsList), // Menampilkan KRS yang ada
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Text('Daftar KRS:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text('Daftar KRS:',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   SizedBox(height: 10),
                   krsList.isEmpty
                       ? Center(child: Text('Belum ada KRS yang ditambahkan'))
@@ -174,7 +179,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                 trailing: IconButton(
                                   icon: Icon(Icons.delete),
                                   onPressed: () {
-                                    hapusKRS(index);  // Menghapus KRS
+                                    hapusKRS(index); // Menghapus KRS
                                   },
                                 ),
                               ),
@@ -192,10 +197,11 @@ class _DashboardPageState extends State<DashboardPage> {
         children: [
           FloatingActionButton(
             onPressed: () {
-              _tampilkanDialogTambahKRS(context);  // Menggunakan dialog untuk tambah KRS
+              _tampilkanDialogTambahKRS(
+                  context); // Menggunakan dialog untuk tambah KRS
             },
-            child: Icon(Icons.add),
             tooltip: "Tambah KRS",
+            child: Icon(Icons.add),
           ),
         ],
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login_page.dart';  // Pastikan LoginPage Anda benar
+import 'login_page.dart'; // Pastikan LoginPage Anda benar
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
       title: 'Aplikasi Kuliah',
       theme: ThemeData(
         primaryColor: Colors.blueAccent, // Warna utama aplikasi
-        scaffoldBackgroundColor: Colors.white, // Latar belakang putih untuk aplikasi
+        scaffoldBackgroundColor:
+            Colors.white, // Latar belakang putih untuk aplikasi
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.blueAccent, // Warna AppBar
           titleTextStyle: TextStyle(
@@ -35,15 +36,15 @@ class MyApp extends StatelessWidget {
         ),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12), // Membuat border input lebih halus
+            borderRadius:
+                BorderRadius.circular(12), // Membuat border input lebih halus
           ),
           contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-          labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500), // Label lebih jelas
+          labelStyle: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.w500), // Label lebih jelas
         ),
       ),
       home: LoginPage(), // Pastikan LoginPage yang baru tetap di-load di sini
     );
-    
   }
-  
 }

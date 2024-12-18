@@ -3,7 +3,7 @@ import 'dashboard_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -141,15 +141,16 @@ class _LoginPageState extends State<LoginPage> {
                       // Tombol "Masuk"
                       ElevatedButton(
                         onPressed: () => _login(context),
-                        child: Text('Masuk'),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blueAccent,
-                          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 15, horizontal: 50),
                           textStyle: TextStyle(fontSize: 18),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
+                        child: Text('Masuk'),
                       ),
                     ],
                   ),
@@ -166,7 +167,9 @@ class _LoginPageState extends State<LoginPage> {
                         // Navigasi ke halaman registrasi (tidak ada di sini, bisa dibuat sendiri)
                         print('Pendaftaran akun baru');
                       },
-                      child: Text('Daftar', style: TextStyle(fontSize: 16, color: Colors.blueAccent)),
+                      child: Text('Daftar',
+                          style: TextStyle(
+                              fontSize: 16, color: Colors.blueAccent)),
                     ),
                   ],
                 ),
